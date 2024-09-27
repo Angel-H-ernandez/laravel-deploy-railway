@@ -6,7 +6,7 @@
 ### Obtner la version de api que esta trabajando
 ``/info``
 
-<h1 style="color: blue;">Loguearse</h1>
+<h1 style="color: #f00;">Loguearse</h1>
 ``/login``
   
 ### body
