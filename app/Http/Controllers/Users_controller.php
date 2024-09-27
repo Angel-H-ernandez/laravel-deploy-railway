@@ -32,7 +32,7 @@ class Users_controller extends Controller
     public function index(){
         $users = Users_model::all();
 
-        if(!$users){
+        if($users->isEmpty()){
             $data = [
                 'message' => "No users found",
                 'status' => 404
