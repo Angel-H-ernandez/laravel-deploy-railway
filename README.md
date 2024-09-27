@@ -4,7 +4,7 @@
 
 
 ### Obtner la version de api que esta trabajando
-``/version``
+``/info``
 
 <h1 style="color: blue;">Loguearse</h1>
 ``/login``
