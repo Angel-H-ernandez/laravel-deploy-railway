@@ -12,7 +12,7 @@ class Plan_servicio_controller extends Controller
 
         $plan_servicio = Plan_servicio_model::find($id);
 
-        if(!$plan_servicio){
+        if($plan_servicio->isEmpty()){
             $data = [
                 'mensaje' => 'Plan servicio no encontrado',
                 'status' => '404'
@@ -34,7 +34,7 @@ class Plan_servicio_controller extends Controller
 
         $plan_servicio = Plan_servicio_model::find($id);
 
-        if(!$plan_servicio){
+        if($plan_servicio->isEmpty()){
             $data = [
                 'mensaje' => 'Plan servicio no encontrado',
                 'status' => '404'

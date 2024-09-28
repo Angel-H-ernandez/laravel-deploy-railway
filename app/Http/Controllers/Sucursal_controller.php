@@ -80,7 +80,7 @@ class Sucursal_controller extends Controller
     public function show($id){
         $sucursal = Sucursal_model::find($id);
 
-        if(!$sucursal){
+        if($sucursal->isEmpty()){
             $datos = [
                 'mensaje' => 'Registro no encontrado',
                 'status' => 404
@@ -110,7 +110,7 @@ class Sucursal_controller extends Controller
 
         $sucursal = Sucursal_model::find($id);
 
-        if(!$sucursal){
+        if($sucursal->isEmpty()){
             $datos = [
                 'mensaje' => 'Registro no encontrado',
                 'status' => 404
@@ -139,7 +139,7 @@ class Sucursal_controller extends Controller
     public function destroy($id){
         $sucursal = Sucursal_model::find($id);
 
-        if(!$sucursal){
+        if($sucursal->isEmpty()){
             $datos = [
                 'mensaje' => 'Registro no encontrado',
                 'status' => 404

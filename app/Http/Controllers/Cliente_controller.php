@@ -15,7 +15,7 @@ class Cliente_controller extends Controller
     public function index($id_usuario){
         $usuario_activo = Validar_usuario::isUsuarioActivo($id_usuario);
 
-        if(!$usuario_activo){
+        if($usuario_activo){
             $data = [
                 'message' => 'usuario inactivo',
                 'status' => 403
@@ -68,7 +68,7 @@ class Cliente_controller extends Controller
             'email' => $request->email,
             'id_usuario' => $request->id_usuario
         ]);
-        if(!$cliente){
+        if($cliente->isEmpty()){
             $data = [
                 'message' => 'No se pudo crear el cliente',
                 'status' => 404
@@ -103,7 +103,7 @@ class Cliente_controller extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
         $cliente = Cliente_model::find($id);
-        if(!$cliente){
+        if($cliente->isEmpty()){
             $data = [
                 'message' => 'El cliente no existe',
                 'status' => 404

@@ -15,7 +15,7 @@ class Rol_subusuario_controller extends Controller
 
             $roles_subusuario = Rol_subusuario_model::where('id_usuario',$id_usuario)->get();
 
-            if(!$roles_subusuario){
+            if($roles_subusuario->isEmpty()){
                 $datos = [
                     'Mensaje' => 'Registros no encontrados',
                     'status' => 404
@@ -75,7 +75,7 @@ class Rol_subusuario_controller extends Controller
 
         $rol_subusuario = Rol_subusuario_model::find($id);
 
-        if(!$rol_subusuario){
+        if($rol_subusuario->isEmpty()){
             $data = [
                 'Mensaje' => 'Registro no encontrado',
                 'status' => 404

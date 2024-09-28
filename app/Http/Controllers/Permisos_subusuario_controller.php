@@ -11,7 +11,7 @@ class Permisos_subusuario_controller extends Controller
     public function get($id){
         $permisos_subusuario  = Permisos_subusuario_model::find($id);
 
-        if(!$permisos_subusuario){
+        if($permisos_subusuario->isEmpty()){
             $data = [
                 'mensaje' => 'No se encuentra el permiso solicitado',
                 'status' => 404
@@ -29,7 +29,7 @@ class Permisos_subusuario_controller extends Controller
     public function update(Request $request, $id){
         $permisos_subusuario = Permisos_subusuario_model::find($id);
 
-        if(!$permisos_subusuario){
+        if($permisos_subusuario->isEmpty()){
             $data = [
                 'mensaje' => 'No se encuentra el permiso solicitado',
                 'status' => 404

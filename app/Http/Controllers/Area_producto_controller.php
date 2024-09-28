@@ -13,7 +13,7 @@ class Area_producto_controller extends Controller
 
         $area_prodcuto = Area_producto_model::where('id_usuario',$id_usuario)->get();
 
-        if(!$area_prodcuto){
+        if($area_prodcuto->isEmpty()){
             $data = [
                 'mensaje' => 'No se encontraron resultados',
                 'codigo' => 404,
@@ -53,7 +53,7 @@ class Area_producto_controller extends Controller
             ]
         );
 
-        if(!$area_producto){
+        if($area_producto->isEmpty()){
             $data = [
                 'mensaje' => 'No se pudo crear la area',
                 'codigo' => 400,
@@ -84,7 +84,7 @@ class Area_producto_controller extends Controller
 
         $area_producto = Area_producto_model::find($id);
 
-        if(!$area_producto){
+        if($area_producto->isEmpty()){
             $data = [
                 'mensaje' => 'No se encontro la area',
                 'codigo' => 404,

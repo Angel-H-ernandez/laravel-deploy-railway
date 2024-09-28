@@ -12,7 +12,7 @@ class Users_controller extends Controller
     public function show($id){
         $user = Users_model::find($id);
 
-        if(!$user){
+        if($user->isEmpty()){
             $data = [
                 'message' => 'User not found',
                 'status' => 404
@@ -91,7 +91,7 @@ class Users_controller extends Controller
         );
 
         //when can't create group task
-        if(!$usuario){
+        if($usuario->isEmpty()){
             $data = [
                 'message' => 'Error while creating usuario',
                 'status' => 500
@@ -111,7 +111,7 @@ class Users_controller extends Controller
 
     public function update(Request $request, $id){
         $user = Users_model::find($id);
-        if(!$user){
+        if($user->isEmpty()){
             $data = [
                 'message' => 'User not found',
                 'status' => 404
@@ -172,7 +172,7 @@ class Users_controller extends Controller
 
     public function destroy($id){
         $user = Users_model::find($id);
-        if(!$user){
+        if($user->isEmpty()){
             $data = [
                 'message' => 'User not found',
                 'status' => 404

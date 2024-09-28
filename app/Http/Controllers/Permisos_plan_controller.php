@@ -14,7 +14,7 @@ class Permisos_plan_controller extends Controller
     {
         $permisos_plan = Permisos_plan_model::find($id);
 
-        if (!$permisos_plan) {
+        if ($permisos_plan->isEmpty()) {
             $data = [
                 'mensaje' => 'Permisos plan no encontrado',
                 'status' => 404
@@ -33,7 +33,7 @@ class Permisos_plan_controller extends Controller
 
         $permisos_plan = Permisos_plan_model::find($id);
 
-        if (!$permisos_plan) {
+        if ($permisos_plan->isEmpty()) {
             $data = [
                 'mensaje' => 'Permisos plan no encontrado',
                 'status' => 404
