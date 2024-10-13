@@ -4,19 +4,20 @@
 
 
 ### Obtner la version de api que esta trabajando
-``/info``
+```/info```
 
-<h1 style="color: #f00;">Loguearse</h1>
-``/login``
+___
+# Loguearse
+```/login```
   
-### body
+#### body
 ```json
     {
         "correo":
         "password":
     }
 ```
-  
+___
 # usuarios
 
 ## - listar usuarios
@@ -24,7 +25,7 @@
 
 ## - crear usuario
 ``/create-user``
-### body
+#### body
 ```json
 {
     "name":
@@ -44,7 +45,7 @@
 ## - actualizar usuario
 
 ``/update-user/id``
-### body
+#### body
 ```json
     {
     "name":
@@ -66,7 +67,7 @@
 
 ## - obtener usuario
 ``/get-user/id``
-
+___
 # Permisos plan
 
 ## obtner los permisos
@@ -74,7 +75,7 @@
 
 ## actualizar los permisos
 ``/update-permisos-plan/id``
-### body
+#### body
 ```json
 {
     "online"
@@ -85,14 +86,14 @@
 }
 
 ```
-
+___
 # Permisos subusuario
 ## obtner los permisos
 ``/get-permisos-subusuario/id``
 
 ## actualizar los permisos
 ``/update-permisos-subusuario/id``
-### body
+#### body
 ```json
 {
     "ver"
@@ -101,14 +102,14 @@
     "crear"
 }
 ```
-
+___
 # Plan servicio
 ## obtner un plan
 ``/get-plan-servicio/id``
 
 ## actualizar los permisos
 ``/update-plan-servicio/id``
-### body
+#### body
 ```json
 {
     "nombre"
@@ -117,7 +118,7 @@
     "id_permisos_plan"
 }
 ```
-
+___
 # Sucursal
 ## obtner sucursal
 ``/get-sucursal/id``
@@ -125,7 +126,7 @@
 
 ## actualizar sucursal
 ``/update-sucursal/id``
-### body
+#### body
 ```json
 {
     "nombre"
@@ -141,7 +142,7 @@
 
 ## crear sucursales
 ``/create-sucursal``
-### body
+#### body
 ```json
 {
     "nombre"
@@ -153,6 +154,13 @@
 
 ## eliminar sucursal
 ``/delete-sucursal/id``
+___
+
+# Clientes
+
+## listar clientes
+``/list-clientes/{id_usuario}``
+
 
 
 

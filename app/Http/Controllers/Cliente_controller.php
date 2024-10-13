@@ -15,7 +15,7 @@ class Cliente_controller extends Controller
     public function index($id_usuario){
         $usuario_activo = Validar_usuario::isUsuarioActivo($id_usuario);
 
-        if($usuario_activo){
+        if(!$usuario_activo){
             $data = [
                 'message' => 'usuario inactivo',
                 'status' => 403

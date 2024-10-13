@@ -3,6 +3,7 @@
 namespace App\Librerias;
 
 use App\Models\Users_model;
+use function PHPUnit\Framework\isEmpty;
 
 class Validar_usuario
 {
@@ -10,9 +11,7 @@ class Validar_usuario
 
         $usuario = Users_model::find($id_usuario);
 
-        if(!$usuario) {
-            return true;
-        }
+
         return $usuario->activo;
 
 
