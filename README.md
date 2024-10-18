@@ -1,5 +1,6 @@
 # End Points
-
+### ruta raiz
+``https://sawapi.up.railway.app/api``
 
 
 
@@ -44,7 +45,7 @@ ___
 ```
 ## - actualizar usuario
 
-``/update-user/id``
+``/update-user/id?``
 #### body
 ```json
     {
@@ -63,18 +64,18 @@ ___
 
 ```
 ## - eliminar usuario
-``/delete-user/id``
+``/delete-user/id?``
 
 ## - obtener usuario
-``/get-user/id``
+``/get-user/id?``
 ___
 # Permisos plan
 
 ## obtner los permisos
-``/show-permisos-plan/id``
+``/show-permisos-plan/id?``
 
 ## actualizar los permisos
-``/update-permisos-plan/id``
+``/update-permisos-plan/id?``
 #### body
 ```json
 {
@@ -89,10 +90,10 @@ ___
 ___
 # Permisos subusuario
 ## obtner los permisos
-``/get-permisos-subusuario/id``
+``/get-permisos-subusuario/id?``
 
 ## actualizar los permisos
-``/update-permisos-subusuario/id``
+``/update-permisos-subusuario/id?``
 #### body
 ```json
 {
@@ -105,10 +106,10 @@ ___
 ___
 # Plan servicio
 ## obtner un plan
-``/get-plan-servicio/id``
+``/get-plan-servicio/id?``
 
 ## actualizar los permisos
-``/update-plan-servicio/id``
+``/update-plan-servicio/id?``
 #### body
 ```json
 {
@@ -121,11 +122,11 @@ ___
 ___
 # Sucursal
 ## obtner sucursal
-``/get-sucursal/id``
+``/get-sucursal/id?``
 
 
 ## actualizar sucursal
-``/update-sucursal/id``
+``/update-sucursal/id?``
 #### body
 ```json
 {
@@ -137,7 +138,7 @@ ___
 ```
 
 ## listar sucursales
-``/list-sucursal/id_usuario``
+``/list-sucursal/id_usuario?``
 
 
 ## crear sucursales
@@ -153,13 +154,13 @@ ___
 ```
 
 ## eliminar sucursal
-``/delete-sucursal/id``
+``/delete-sucursal/id?``
 ___
 
 # Clientes
 
 ## listar clientes
-``/list-clientes/{id_usuario}``
+``/list-clientes/id_usuario?``
 
 
 
