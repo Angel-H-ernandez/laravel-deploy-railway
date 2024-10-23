@@ -164,15 +164,15 @@ ___
 #### respone
 ```json
 
- "clientes" : [
-                {
-                    "id",
-                    "nombre",
-                    "telefono",
-                    "email",
-                    "id_usuario"
-                }
-              ]
+ [
+    {
+        "id",
+        "nombre",
+        "telefono",
+        "email",
+        "id_usuario"
+    }
+ ]
 ```
 
 
