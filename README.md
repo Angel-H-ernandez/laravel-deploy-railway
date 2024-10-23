@@ -161,7 +161,19 @@ ___
 
 ## listar clientes
 ``/list-clientes/id_usuario?``
+#### respone
+```json
 
+ "clientes" : [
+                {
+                    "id",
+                    "nombre",
+                    "telefono",
+                    "email",
+                    "id_usuario"
+                }
+              ]
+```
 
 
 
