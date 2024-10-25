@@ -9,7 +9,7 @@ class User_administrador_model extends Model
 {
     public $timestamps = false;
     use HasFactory;
-    protected $table = "usuario_administrador";
+    protected $table = "usuario_adminitrador";
     protected $fillable = [
         'nombre',
         'correo',
