@@ -19,7 +19,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/info', function(){
-    return "api 1.1 \n desarrollador: Miguel angel Hernandez";
+    return "api 1.2 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
@@ -78,4 +78,4 @@ Route::put('/update-cliente/{id}', [Cliente_controller::class, 'update']);
 
 
 //PRODUCTOS__________________________________________________________________
-Route::get('list-productos/{id_usuario', [Producto_controller::class, 'index']);
+Route::get('/list-productos/{id_usuario', [Producto_controller::class, 'index']);
