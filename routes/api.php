@@ -78,4 +78,4 @@ Route::put('/update-cliente/{id}', [Cliente_controller::class, 'update']);
 
 
 //PRODUCTOS__________________________________________________________________
-Route::get('/list-productos/{id_usuario', [Producto_controller::class, 'index']);
+Route::get('/list-productos/{id_usuario}', [Producto_controller::class, 'index']);
