@@ -174,6 +174,22 @@ ___
     }
  ]
 ```
+___
+# Area Producto
+## listar Areas
+``list-areas-productos/id_usuario?``
+#### respone
+```json
+
+[
+    {
+        "id": 1,
+        "nombre": "Área A",
+        "id_usuario": 22
+    }
+]
+```
+
 
 
 

@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\Area_producto_controller;
 use App\Http\Controllers\Cliente_controller;
+use App\Http\Controllers\Producto_controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users_controller;
@@ -18,7 +19,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/info', function(){
-    return "api 1.0 \n desarrollador: Miguel angel Hernandez";
+    return "api 1.1 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
@@ -74,3 +75,7 @@ Route::put('update-rol-subusuario/{id}', [Rol_subusuario_controller::class, 'upd
 Route::get('/list-clientes/{id_usuario}', [Cliente_controller::class, 'index']);
 Route::post('/create-cliente', [Cliente_controller::class, 'store']);
 Route::put('/update-cliente/{id}', [Cliente_controller::class, 'update']);
+
+
+//PRODUCTOS__________________________________________________________________
+Route::get('list-productos/{id_usuario', [Producto_controller::class, 'index']);
