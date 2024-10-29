@@ -18,7 +18,7 @@ use App\Http\Controllers\Area_trabajador_controller;
 use App\Http\Controllers\Rol_subusuario_controller;
 
 
-Route::get('/info', function(){
+Route::get('/', function(){
     return "api 1.2 \n desarrollador: Miguel angel Hernandez";
 });
 
