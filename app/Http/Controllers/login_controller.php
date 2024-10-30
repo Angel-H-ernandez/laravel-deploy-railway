@@ -7,6 +7,8 @@ use App\Models\User_administrador_model;
 use App\Models\Users_model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Models\Trabajador_model;
+use App\Models\Users_model;
 
 class login_controller extends Controller
 {
