@@ -8,7 +8,7 @@ use App\Http\Controllers\Producto_controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users_controller;
-use App\Http\Controllers\User_administrador_controller;
+use App\Http\Controllers\login_controller;
 use App\Http\Controllers\Permisos_plan_controller;
 use App\Http\Controllers\Permisos_subusuario_controller;
 use App\Http\Controllers\Plan_servicio_controller;
@@ -19,11 +19,11 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/', function(){
-    return "api 1.2 \n desarrollador: Miguel angel Hernandez";
+    return "api 1.3 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
-Route::post('/login', [User_administrador_controller::class, 'login']);
+Route::post('/login', [login_controller::class, 'login']);
 
 //USERS____________________________________________________________________
 Route::get('/list-users', [Users_controller::class, 'index']);

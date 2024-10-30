@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trabajador_model;
 use App\Models\User_administrador_model;
+use App\Models\Users_model;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class User_administrador_controller extends Controller
+class login_controller extends Controller
 {
 
     public function login(Request $request){
@@ -20,24 +22,24 @@ class User_administrador_controller extends Controller
         }
 
         //buscar si es trabajador
-        $trabajador = Trabajador_model::where('correo', $request->correo)
+        $trabajador = Trabajador_model::where('email', $request->correo)
             ->where('password', $request->password)
             ->first();
 
-        if($trabajador->isEmpty()){
+        if(!$trabajador){
             //buscar si es usuario
-            $user = User_model::where('correo', $request->correo)
+            $user = Users_model::where('correo', $request->correo)
                 ->where('password', $request->password)
                 ->first();
 
-            if($user->isEmpty()){
+            if(!$user){
 
                 //buscar si es usuario administrador
                 $user_admin = User_administrador_model::where('correo', $request->correo)
                     ->where('password', $request->password)
                     ->first();
 
-                if($user_admin->isEmpty()){
+                if(!$user_admin){
                     $data = [
                         'login' => false,
                         'status' => 401,
