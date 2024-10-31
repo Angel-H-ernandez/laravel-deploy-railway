@@ -23,7 +23,7 @@ class Producto_controller extends Controller
 
         //si se encontraron
         $data = [
-            'productos' => $productos,
+            'datos' => $productos,
             'status' => 200
         ];
         return response()->json($data, 200);

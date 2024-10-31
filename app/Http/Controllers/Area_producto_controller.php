@@ -22,7 +22,7 @@ class Area_producto_controller extends Controller
         }
 
         $data = [
-            'area' => $area_prodcuto,
+            'datos' => $area_prodcuto,
             'status' => 200
         ];
         return response()->json($data, 200);

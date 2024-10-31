@@ -32,7 +32,7 @@ class Cliente_controller extends Controller
             return response()->json($data, 404);
         }
         $data = [
-            'clientes' => $clientes,
+            'datos' => $clientes,
             'status' => 200
         ];
         return response()->json($data, 200);
