@@ -34,7 +34,7 @@ class login_controller extends Controller
                 ->first();
 
             if(!$user){
-
+                //ELIMINAR; un usuario administrador no puede iniciar sesion aqui
                 //buscar si es usuario administrador
                 $user_admin = User_administrador_model::where('correo', $request->correo)
                     ->where('password', $request->password)
@@ -51,7 +51,7 @@ class login_controller extends Controller
                 }
 
                 $data = [
-                    'login' => true,
+                    'login' => $user_admin->activo,
                     'status' => 200,
                     'tipo_user' => 'Usuario administrador',
                     'user' => $user_admin,
@@ -62,7 +62,7 @@ class login_controller extends Controller
             }
 
             $data = [
-                'login' => true,
+                'login' => $user->activo,
                 'status' => 200,
                 'tipo_user' => 'Usuario',
                 'user' => $user,
@@ -73,17 +73,12 @@ class login_controller extends Controller
         }
 
         $data = [
-            'login' => true,
+            'login' => $trabajador->activo,
             'status' => 200,
             'tipo_user' => 'Trabajador',
             'user' => $trabajador,
         ];
         return response()->json($data, 200);
-
-
-
-
-        //buscar si es usuario administrador
 
     }
 }
