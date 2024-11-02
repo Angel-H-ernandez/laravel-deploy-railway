@@ -5,6 +5,7 @@
 use App\Http\Controllers\Area_producto_controller;
 use App\Http\Controllers\Cliente_controller;
 use App\Http\Controllers\Producto_controller;
+use App\Http\Controllers\Provedor_controller;
 use App\Http\Controllers\Trabajador_controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -85,4 +86,5 @@ Route::get('/list-productos/{id_usuario}', [Producto_controller::class, 'index']
 Route::get('/list-trabajadores/{id}', [Trabajador_controller::class, 'index']);
 
 //PROVEDORES
+Route::get('/list-provedores/{id}', [Provedor_controller::class, 'index']);
 
