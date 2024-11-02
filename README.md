@@ -189,6 +189,34 @@ ___
     }
 ]
 ```
+___
+# Trabajadores
+## listar trabajadores
+``list-trbajadores/id_usuario?``
+#### respone
+```json
+
+{
+    datos: [
+        {
+            "id": 5,
+            "nombre": "trabajador1",
+            "telefono": "1231231239",
+            "email": "el@el.com",
+            "id_usuario": 22,
+            "id_sucursal": 1,
+            "id_area_trabajador": 1,
+            "sueldo": 1,
+            "periodo_pago": "1",
+            "cuenta_bancaria": "1",
+            "password": "123",
+            "activo": false
+        }
+    ],
+    status: 200
+}
+```
+___
 
 
 

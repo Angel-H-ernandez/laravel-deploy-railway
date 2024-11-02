@@ -10,16 +10,16 @@ class Area_trabajador_controller extends Controller
     public function index($id_usuario){
         $area_trabajador = Area_trabajador_model::where('id_usuario',$id_usuario)->get();
 
-        if(!$area_trabajador){
+        if($area_trabajador->isEmpty()){
             $data = [
-                'mensaje' => 'No se encontraron areas de trabajsdores',
+                'mensaje' => 'No se encontraron datos asociados a ese id',
                 'status' => 404
             ];
             return response()->json($data, 404);
         }
 
         $data = [
-            'areas' => $area_trabajador,
+            'datos' => $area_trabajador,
             'status' => 200
         ];
         return response()->json($data, 200);

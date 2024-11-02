@@ -65,7 +65,8 @@ class login_controller extends Controller
                 'login' => $user->activo,
                 'status' => 200,
                 'tipo_user' => 'Usuario',
-                'user' => $user,
+                //'user' => $user,
+                'id_usuario' => $user->id
             ];
 
             return response()->json($data, 200);
@@ -76,7 +77,9 @@ class login_controller extends Controller
             'login' => $trabajador->activo,
             'status' => 200,
             'tipo_user' => 'Trabajador',
-            'user' => $trabajador,
+            //'user' => $trabajador,
+            'id_user' => $trabajador->id_usuario,
+            'id_trabajador' => $trabajador->id
         ];
         return response()->json($data, 200);
 

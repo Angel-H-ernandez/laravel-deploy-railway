@@ -5,6 +5,7 @@
 use App\Http\Controllers\Area_producto_controller;
 use App\Http\Controllers\Cliente_controller;
 use App\Http\Controllers\Producto_controller;
+use App\Http\Controllers\Trabajador_controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users_controller;
@@ -19,7 +20,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/', function(){
-    return "api 1.4 \n desarrollador: Miguel angel Hernandez";
+    return "api 1.5 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
@@ -79,3 +80,9 @@ Route::put('/update-cliente/{id}', [Cliente_controller::class, 'update']);
 
 //PRODUCTOS__________________________________________________________________
 Route::get('/list-productos/{id_usuario}', [Producto_controller::class, 'index']);
+
+//TRABAJADOR__________________________________________________________________
+Route::get('/list-trabajadores/{id}', [Trabajador_controller::class, 'index']);
+
+//PROVEDORES
+

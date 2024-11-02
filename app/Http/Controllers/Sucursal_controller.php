@@ -24,14 +24,14 @@ class Sucursal_controller extends Controller
 
         if($sucursales->isEmpty()){
             $datos = [
-                "mensaje" => "No se encontraron registros",
+                "datos" => "No se encontraron registros",
                 "status" => 404
             ];
             return response()->json($datos, $datos["status"]);
         }
 
         $datos = [
-            "sucursales" => $sucursales,
+            "datos" => $sucursales,
             "status" => 200
         ];
 
