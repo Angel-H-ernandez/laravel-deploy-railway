@@ -97,7 +97,7 @@ ___
 #### body
 ```json
 {
-    "ver"
+    "ver": true,
     "vender"
     "editar"
     "crear"

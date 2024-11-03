@@ -62,11 +62,13 @@ Route::put('/update-almacen/{id}', [Almacen_controller::class, 'update']);
 Route::get('/list-areas-productos/{id_usuario}', [Area_producto_controller::class, 'index']);
 Route::post('/create-area-producto', [Area_producto_controller::class, 'store']);
 Route::put('/update-area-producto/{id}', [Area_producto_controller::class, 'update']);
+//!!!!!!!!!!!!eliminar
 
 //AREA_TRABAJADOR________________________________________________
 Route::get('/list-areas-trabajador/{id_usuario}', [Area_trabajador_controller::class, 'index']);
 Route::post('/create-area-trabajador', [Area_trabajador_controller::class, 'store']);
 Route::put('/update-area-trabajador/{id}', [Area_trabajador_controller::class, 'update']);
+//ELIMINAR
 
 //ROL_SUBUSUARIO______________________________________________
 Route::get('list-roles-subusuario/{id_usuario}', [Rol_subusuario_controller::class, 'index']);
@@ -77,14 +79,24 @@ Route::put('update-rol-subusuario/{id}', [Rol_subusuario_controller::class, 'upd
 Route::get('/list-clientes/{id_usuario}', [Cliente_controller::class, 'index']);
 Route::post('/create-cliente', [Cliente_controller::class, 'store']);
 Route::put('/update-cliente/{id}', [Cliente_controller::class, 'update']);
+//eliminar__!!!!!!!!!!!!!!!_________
 
 
 //PRODUCTOS__________________________________________________________________
 Route::get('/list-productos/{id_usuario}', [Producto_controller::class, 'index']);
+Route::put('/update-producto/{id}', [Producto_controller::class, 'update']);
+Route::post('/create-producto', [Producto_controller::class, 'store']);
+Route::delete('/delete-producto/{id}', [Producto_controller::class, 'delete']);
 
 //TRABAJADOR__________________________________________________________________
 Route::get('/list-trabajadores/{id}', [Trabajador_controller::class, 'index']);
+//EDITAT
+//CREAR
+//ELIMINAR
 
 //PROVEDORES
 Route::get('/list-provedores/{id}', [Provedor_controller::class, 'index']);
+//EDTAR
+//CREAR
+//ELIMINAR
 
