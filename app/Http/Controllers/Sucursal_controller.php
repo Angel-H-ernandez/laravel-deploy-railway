@@ -105,6 +105,7 @@ class Sucursal_controller extends Controller
             'id_usuario' => 'required|integer',
         ]);
         if($validator->fails()){
+
             return response()->json($validator->errors()->toJson(), 400);
         }
 

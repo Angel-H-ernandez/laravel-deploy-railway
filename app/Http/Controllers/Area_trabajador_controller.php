@@ -97,4 +97,21 @@ class Area_trabajador_controller extends Controller
 
 
     }
+
+    public function delete($id){
+        $area_trabajador = Area_trabajador_model::find($id);
+        if(!$area_trabajador){
+            $data = [
+                'mensaje' => 'area de trabajador no se encuentra registrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $area_trabajador->delete();
+        $data = [
+            'mensaje' => 'area de trabajador eliminado',
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 }

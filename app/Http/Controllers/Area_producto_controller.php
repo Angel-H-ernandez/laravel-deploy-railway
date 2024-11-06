@@ -109,4 +109,25 @@ class Area_producto_controller extends Controller
 
     }
 
+    public function delete($id){
+        $area_producto = Area_producto_model::find($id);
+
+        if(!$area_producto){
+            $data = [
+                'mensaje' => 'No se encontro la area',
+                'codigo' => 404,
+            ];
+            return response()->json($data, 404);
+        }
+
+        $area_producto->delete();
+
+        $data = [
+            'mensaje' => 'Area eliminada exitosamente',
+            'codigo' => 200,
+            'area_producto' => $area_producto
+        ];
+        return response()->json($data, 200);
+    }
+
 }

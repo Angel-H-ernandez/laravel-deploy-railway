@@ -124,4 +124,24 @@ class Cliente_controller extends Controller
         return response()->json($data, 200);
 
     }
+
+    public function delete($id){
+        $cliente = Cliente_model::find($id);
+
+        if(!$cliente){
+            $data = [
+                'message' => 'El cliente no existe',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $cliente->delete();
+
+        $data = [
+            'message' => 'El cliente se ha eliminado correctamente',
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 }
