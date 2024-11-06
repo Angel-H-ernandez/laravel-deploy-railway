@@ -68,7 +68,7 @@ class Cliente_controller extends Controller
             'email' => $request->email,
             'id_usuario' => $request->id_usuario
         ]);
-        if($cliente->isEmpty()){
+        if(!$cliente){
             $data = [
                 'message' => 'No se pudo crear el cliente',
                 'status' => 404
