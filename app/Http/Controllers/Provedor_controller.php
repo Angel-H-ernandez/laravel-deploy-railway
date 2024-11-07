@@ -55,12 +55,55 @@ class Provedor_controller extends Controller
     }
     public function update($id, Request $request){
 
+        $validator = Validator($request->all(), [
+            'nombre' => 'required|string',
+            'telefono' => 'required|integer',
+            'correo' => 'required|email',
+        ]);
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $provedor = Provedor_model::find($id);
+        if(!$provedor){
+            $data = [
+                'error' => "No existe proveedor con id ".$id
+            ];
+            return response()->json($data, 404);
+        }
+
+        $provedor->nombre = $request->nombre;
+        $provedor->correo = $request->correo;
+        $provedor->telefono = $request->telefono;
+        $provedor->save();
+
+        $data = [
+            'message' => 'Proveedor actualizado',
+            'datos' => $provedor,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
     }
 
     public function show($id){
 
     }
     public function delete($id){
+
+        $provedor = Provedor_model::find($id);
+        if(!$provedor){
+            $data = [
+                'error' => "No existe proveedor con id ".$id
+            ];
+            return response()->json($data, 404);
+        }
+        $provedor->delete();
+
+        $data = [
+            'message' => 'Proveedor eliminado',
+            'status' => 200
+        ];
+        return response()->json($data, 200);
 
     }
 

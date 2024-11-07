@@ -66,8 +66,54 @@ class Compra_controller extends Controller
     }
     public function update($id, Request $request){
 
+        $validator = Validator($request->all(), [
+            'id_sucursal' => 'required|integer',
+            'descripcion' => 'required|string',
+            'monto' => 'required|integer',
+            'id_provedor' => 'required|integer',
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+
+        $compra = Compra_model::find($id);
+        if(!$compra){
+            $data = [
+                'datos' => 'No existe compra con ese id',
+                'status' => '404'
+            ];
+            return response()->json($data, 404);
+        }
+
+        $compra->id_sucursal = $request->id_sucursal;
+        $compra->descripcion = $request->descripcion;
+        $compra->monto = $request->monto;
+        $compra->id_provedor = $request->id_provedor;
+        $compra->save();
+
+        $data = [
+            'datos' => $compra,
+            'status' => '200'
+        ];
+        return response()->json($data, 200);
     }
-    public function destroy($id){
+    public function delete($id){
+        $compra = Compra_model::find($id);
+        if(!$compra){
+            $data = [
+                'datos' => 'No existe compra con ese id',
+                'status' => '404'
+            ];
+            return response()->json($data, 404);
+        }
+        $compra->delete();
+
+        $data = [
+            'datos' => 'Compra eliminada',
+            'status' => '200'
+        ];
+        return response()->json($data, 200);
 
     }
 }

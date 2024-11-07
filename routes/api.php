@@ -8,6 +8,7 @@ use App\Http\Controllers\Compra_controller;
 use App\Http\Controllers\Producto_controller;
 use App\Http\Controllers\Provedor_controller;
 use App\Http\Controllers\Trabajador_controller;
+use App\Http\Controllers\Venta_controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users_controller;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/', function(){
-    return "api 1.7 \n desarrollador: Miguel angel Hernandez";
+    return "api 1.8 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
@@ -50,12 +51,12 @@ Route::put('/update-plan-servicio/{id}', [Plan_servicio_controller::class, 'upda
 //SUCURSAL__________________________________
 Route::get('/get-sucursal/{id}', [Sucursal_controller::class, 'show']);
 Route::put('/update-sucursal/{id}', [Sucursal_controller::class, 'update']);
-Route::get('/list-sucursal/{id_usuario}', [Sucursal_controller::class, 'index']);
+Route::get('/list-sucursales/{id_usuario}', [Sucursal_controller::class, 'index']);
 Route::post('/create-sucursal', [Sucursal_controller::class, 'store']);
 Route::delete('/delete-sucursal/{id}', [Sucursal_controller::class, 'destroy']);
 
 //ALMACEN___________________________________________________________________________________________
-Route::get('/get-almacenes/{id_usuario}', [Almacen_controller::class, 'index']);
+Route::get('/list-almacenes/{id_usuario}', [Almacen_controller::class, 'index']);
 Route::post('/create-almacen', [Almacen_controller::class, 'store']);
 Route::put('/update-almacen/{id}', [Almacen_controller::class, 'update']);
 
@@ -98,12 +99,18 @@ Route::delete('/delete-trabajador/{id}', [Trabajador_controller::class, 'delete'
 //PROVEDORES
 Route::get('/list-provedores/{id}', [Provedor_controller::class, 'index']);
 Route::post('/create-provedor/{id}', [Provedor_controller::class, 'store']);
-//EDTAR
-//ELIMINAR
+Route::put('/update-provedor/{id}', [Provedor_controller::class, 'update']);
+Route::delete('/delete-provedor/{id}', [Provedor_controller::class, 'delete']);
 
 //COMPRAS______________________________________________________-
 Route::get('/list-compras/{id}', [Compra_controller::class, 'index']);
-//Route::put('/update-compra/{id}', [Compra_controller::class, 'update']);
+Route::put('/update-compra/{id}', [Compra_controller::class, 'update']);
 Route::post('/create-compra/{id}', [Compra_controller::class, 'store']);
-//Route::delete('/delete-compra/{id}', [Compra_controller::class, 'delete']);
+Route::delete('/delete-compra/{id}', [Compra_controller::class, 'delete']);
+
+//VENTAS______________________________________________________-
+Route::get('/list-ventas/{id}', [Venta_controller::class, 'index']);
+Route::post('/create-venta/{id}', [Venta_controller::class, 'store']);
+Route::delete('/delete-venta/{id}', [Venta_controller::class, 'delete']);
+Route::put('/update-venta/{id}', [Venta_controller::class, 'update']);
 
