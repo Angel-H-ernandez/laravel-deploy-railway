@@ -150,4 +150,19 @@ class Trabajador_controller extends Controller
         return response()->json($datos, $datos["status"]);
     }
 
+    public function show($id){
+        $trabajador = Trabajador_model::find($id);
+        if(!$trabajador){
+            $data = [
+                'error' => "No existe trabajador con id ".$id
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'datos' => $trabajador,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
+
 }

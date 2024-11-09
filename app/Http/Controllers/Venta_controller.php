@@ -32,7 +32,6 @@ class Venta_controller extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'id_cliente' => 'required|integer',
-            'fecha' => 'required|date',
             'monto' => 'required|numeric',
             'id_sucursal' => 'required|integer',
             'id_trabajador' => 'required|integer',
@@ -49,7 +48,6 @@ class Venta_controller extends Controller
 
        $venta = Venta_model::create([
             'id_cliente' => $request->id_cliente,
-            'fecha' => $request->fecha,
             'monto' => $request->monto,
             'id_sucursal' => $request->id_sucursal,
             'id_trabajador' => $request->id_trabajador,
@@ -77,7 +75,7 @@ class Venta_controller extends Controller
     public function update(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'id_cliente' => 'required|integer',
-            'fecha' => 'required|date',
+
             'monto' => 'required|numeric',
             'id_sucursal' => 'required|integer',
             'id_trabajador' => 'required|integer',
@@ -103,7 +101,7 @@ class Venta_controller extends Controller
         }
 
         $venta->id_cliente = $request->id_cliente;
-        $venta->fecha = $request->fecha;
+
         $venta->monto = $request->monto;
         $venta->id_sucursal = $request->id_sucursal;
         $venta->id_trabajador = $request->id_trabajador;

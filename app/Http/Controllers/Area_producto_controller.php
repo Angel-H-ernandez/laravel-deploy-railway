@@ -130,4 +130,22 @@ class Area_producto_controller extends Controller
         return response()->json($data, 200);
     }
 
+    public function show($id){
+        $area_producto = Area_producto_model::find($id);
+        if(!$area_producto){
+            $data = [
+                'mensaje' => 'No se encontro la area',
+                'codigo' => 404,
+                'area_producto' => $area_producto
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'mensaje' => 'Area obtenida exitosamente',
+            'codigo' => 200,
+            'area_producto' => $area_producto
+        ];
+        return response()->json($data, 200);
+    }
+
 }

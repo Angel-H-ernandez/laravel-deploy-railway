@@ -86,6 +86,18 @@ class Provedor_controller extends Controller
     }
 
     public function show($id){
+        $provedor = Provedor_model::find($id);
+        if(!$provedor){
+            $data = [
+                'error' => "No existe proveedor con id ".$id
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'datos' => $provedor,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
 
     }
     public function delete($id){

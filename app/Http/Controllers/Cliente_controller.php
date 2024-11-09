@@ -144,4 +144,23 @@ class Cliente_controller extends Controller
         ];
         return response()->json($data, 200);
     }
+
+    public function show($id){
+        $cliente = Cliente_model::find($id);
+
+        if(!$cliente){
+            $data = [
+                'message' => "cliente no encontrado con ese id",
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'message' => "cliente encontrado",
+            'datos' => $cliente,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 }

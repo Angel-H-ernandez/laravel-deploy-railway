@@ -132,6 +132,21 @@ class Producto_controller extends Controller
 
     }
 
+    public function show($id){
+        $producto = Producto_model::find($id);
+        if(!$producto){
+            $data = [
+                'error' => "No existe producto con id ".$id
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'datos' => $producto,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
+
 
 
 
