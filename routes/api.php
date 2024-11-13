@@ -23,7 +23,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/', function(){
-    return "api 2.0 \n desarrollador: Miguel angel Hernandez";
+    return "api 2.1 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
