@@ -66,7 +66,7 @@ class login_controller extends Controller
                 'status' => 200,
                 'tipo_user' => 'Usuario',
                 //'user' => $user,
-                'id_usuario' => $user->id,
+                'id_user' => $user->id,
                 'id_trabajador'  => 0
             ];
 
