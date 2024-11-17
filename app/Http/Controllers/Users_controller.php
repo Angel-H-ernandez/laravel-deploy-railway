@@ -111,7 +111,7 @@ class Users_controller extends Controller
 
     public function update(Request $request, $id){
         $user = Users_model::find($id);
-        if($user->isEmpty()){
+        if(!$user){
             $data = [
                 'message' => 'User not found',
                 'status' => 404
@@ -119,19 +119,17 @@ class Users_controller extends Controller
             return response()->json($data, 404);
         }
 
-        $validator =  Validator::make($request->all(),[
-            'name' => 'required',
-            'fecha_de_incripcion' => 'required',
-            'fecha_inicio_contrato' => 'required',
-            'fecha_final_contrato' => 'required',
-            'fecha_nacimiento' => 'required',
-            'activo' => 'required',
-            'edad' => 'required',
-            'genero' => 'required',
-            'id_plan_servicio' => 'required',
-            'nombre_empresa' => 'required',
-            'id_usuario_administrador' => 'required',
-        ]);
+        $validator =  Validator::make($request->all(), array_filter([
+            'name' => $request->has("name") ? 'required' : null,
+            'fecha_de_incripcion' => $request->has("fecha_de_incripcion") ? 'required' : null,
+            'fecha_inicio_contrato' => $request->has("fecha_inicio_contrato") ? 'required' : null,
+            'fecha_final_contrato' => $request->has("fecha_final_contrato") ? 'required' : null,
+            'fecha_nacimiento' => $request->has("fecha_nacimiento") ? 'required' : null,
+            'activo' => $request->has("activo") ? 'required' : null,
+            'id_plan_servicio' => $request->has("id_plan_servicio") ? 'required' : null,
+            'nombre_empresa' => $request->has("nombre_empresa") ? 'required' : null,
+
+        ]));
 
         //if it's fail
         if($validator->fails()){
@@ -143,7 +141,21 @@ class Users_controller extends Controller
             return response()->json($data,400);
         }
 
-        $user->name = $request->name;
+        // Actualizamos solo los campos que vienen en el request
+        $user->fill($request->only([
+            'name',
+            'fecha_de_incripcion',
+            'fecha_inicio_contrato',
+            'fecha_final_contrato',
+            'fecha_nacimiento',
+            'activo',
+            'id_plan_servicio',
+            'nombre_empresa',
+        ]));
+
+        $user->save();
+
+        /*$user->name = $request->name;
         $user->fecha_de_incripcion = $request->fecha_de_incripcion;
         $user->fecha_inicio_contrato = $request->fecha_inicio_contrato;
         $user->fecha_final_contrato = $request->fecha_final_contrato;
@@ -155,7 +167,7 @@ class Users_controller extends Controller
         $user->nombre_empresa = $request->nombre_empresa;
         $user->id_usuario_administrador = $request->id_usario_administrador;
 
-        $user->save();
+        $user->save();*/
 
         $data = [
             'usuario' => $user,
