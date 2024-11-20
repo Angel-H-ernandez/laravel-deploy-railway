@@ -9,10 +9,8 @@
 - añasdir rembolso
 - organizar de mejor manaer ep an api.
 - verficiar los codigos de error que mando
-- los metodoss de update ssolo deben de actualizar los campos que se envian
 - añadir los metodos shows donde sea necesartio
 - verificar que en todas las vistas se envien datos formateados
-- eliminar las rutas que ya no necesito
 - preguntar chatgo si mis metodos tienen buana estructura
 - actualizar datos cuando se cambie la base de datos
 

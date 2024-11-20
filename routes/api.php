@@ -26,13 +26,6 @@ Route::get('/', function(){
 //LOGIN___________________________________________________________
 Route::post('/login', [login_controller::class, 'login']);
 
-//USERS____________________________________________________________________
-Route::get('/list-users', [Users_controller::class, 'index']);
-Route::post('/create-user', [Users_controller::class, 'store']);
-Route::put('/update-user/{id}', [Users_controller::class, 'update']);
-Route::delete('/delete-user/{id}', [Users_controller::class, 'destroy']);
-Route::get('/get-user/{id}', [Users_controller::class, 'show']);
-
 //SUCURSAL__________________________________
 Route::get('/get-sucursal/{id}', [Sucursal_controller::class, 'show']);
 Route::put('/update-sucursal/{id}', [Sucursal_controller::class, 'update']);
@@ -116,6 +109,13 @@ Route::put('/update-permisos-subusuario/{id}', [Permisos_subusuario_controller::
 /*//PLAN SERVICIO ___________________________________________________________________
 Route::get('/get-plan-servicio/{id}', [Plan_servicio_controller::class, 'get']);
 Route::put('/update-plan-servicio/{id}', [Plan_servicio_controller::class, 'update']);*/
+
+/*//USERS____________________________________________________________________
+Route::get('/list-users', [Users_controller::class, 'index']);
+Route::post('/create-user', [Users_controller::class, 'store']);
+Route::put('/update-user/{id}', [Users_controller::class, 'update']);
+Route::delete('/delete-user/{id}', [Users_controller::class, 'destroy']);
+Route::get('/get-user/{id}', [Users_controller::class, 'show']);*/
 
 /*
  * <?php
