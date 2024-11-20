@@ -2,6 +2,19 @@
 ### ruta raiz
 ``https://sawapi.up.railway.app/api``
 
+## features
+- encriptacion de passwords, email y telefono
+- devolver permisos de usario y trabajador
+- añadir caja registradora
+- añasdir rembolso
+- organizar de mejor manaer ep an api.
+- verficiar los codigos de error que mando
+- los metodoss de update ssolo deben de actualizar los campos que se envian
+- añadir los metodos shows donde sea necesartio
+- verificar que en todas las vistas se envien datos formateados
+- eliminar las rutas que ya no necesito
+- preguntar chatgo si mis metodos tienen buana estructura
+- actualizar datos cuando se cambie la base de datos
 
 
 ### Obtner la version de api que esta trabajando
