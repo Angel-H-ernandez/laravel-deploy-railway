@@ -30,17 +30,15 @@ class Area_trabajador_controller extends Controller
         $validator = Validator::make($request->all(),[
             'nombre' => 'required|string|max:255',
             'id_usuario' => 'required|integer',
-            'id_sucursal' => 'required|integer',
-
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors()->toJson(),422);
         }
 
         $area_trabajador = Area_trabajador_model::create([
             'nombre' => $request->get('nombre'),
             'id_usuario' => $request->id_usuario,
-            'id_sucursal' => $request->id_sucursal,
+
 
 
         ]);
@@ -48,14 +46,15 @@ class Area_trabajador_controller extends Controller
         if(!$area_trabajador){
             $data = [
                 'mensaje' => 'area de trabajador no pudo ser creado',
-                'status' => 404
+                'status' => 400
             ];
-            return response()->json($data, 404);
+            return response()->json($data, 400);
         }
 
         $data = [
             'mensaje' => 'area de trabajador creado',
-            'status' => 201
+            'status' => 201,
+            'area_trabajador' => $area_trabajador
         ];
         return response()->json($data, 201);
 
@@ -69,7 +68,7 @@ class Area_trabajador_controller extends Controller
             'id_sucursal' => 'required|integer',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors()->toJson(),422);
         }
 
         $area_trabajador = Area_trabajador_model::find($id);

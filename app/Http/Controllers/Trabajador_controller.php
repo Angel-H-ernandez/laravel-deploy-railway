@@ -16,7 +16,7 @@ class Trabajador_controller extends Controller
         if($trabajadores->isEmpty()){
             $data = [
                 'mensaje' => 'No se encontraron trabajadores asociados a ese id',
-                'status' => 202
+                'status' => 404
             ];
             return response()->json($data, 404);
         }
@@ -45,7 +45,7 @@ class Trabajador_controller extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $trabajador = Trabajador_model::create([
@@ -65,7 +65,7 @@ class Trabajador_controller extends Controller
         if (!$trabajador) {
             $datos = [
                 'mensaje' => 'Error al crear registro',
-                'status' => 404
+                'status' => 400
             ];
             return response()->json($datos, $datos["status"]);
         }
@@ -95,7 +95,7 @@ class Trabajador_controller extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $trabajador = Trabajador_model::find($id);

@@ -13,7 +13,7 @@ class Provedor_controller extends Controller
         if($provedores->isEmpty()){
             $data = [
                 'datos' => 'No se encontraron provedores asociados a ese id',
-                'status' => 202
+                'status' => 404
             ];
             return response()->json($data, 404);
         }
@@ -32,7 +32,7 @@ class Provedor_controller extends Controller
             'correo' => 'required|email',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
         $provedor = Provedor_model::create([
             'nombre' => $request->nombre,
@@ -43,9 +43,9 @@ class Provedor_controller extends Controller
         if(!$provedor){
             $data = [
                 'datos' => 'Error al crear provedor',
-                'status' => 404
+                'status' => 400
             ];
-            return response()->json($data, 404);
+            return response()->json($data, 400);
         }
         $data = [
             'datos' => $provedor,
@@ -61,7 +61,7 @@ class Provedor_controller extends Controller
             'correo' => 'required|email',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $provedor = Provedor_model::find($id);

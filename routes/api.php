@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Area_producto_controller;
+use App\Http\Controllers\Caja_registradora_controller;
 use App\Http\Controllers\Cliente_controller;
 use App\Http\Controllers\Compra_controller;
 use App\Http\Controllers\Producto_controller;
 use App\Http\Controllers\Provedor_controller;
+use App\Http\Controllers\Rembolso_controller;
 use App\Http\Controllers\Trabajador_controller;
 use App\Http\Controllers\Venta_controller;
 use Illuminate\Support\Facades\Route;
@@ -85,6 +87,16 @@ Route::get('/list-ventas/{id}', [Venta_controller::class, 'index']);
 Route::post('/create-venta', [Venta_controller::class, 'store']);
 Route::delete('/delete-venta/{id}', [Venta_controller::class, 'delete']);
 Route::put('/update-venta/{id}', [Venta_controller::class, 'update']);
+
+//CAJA REGISTRADORA______________________________________________________
+Route::get('/get-caja-registradora/{id}', [Caja_registradora_controller::class, 'show']);
+Route::post('/create-caja-registradora', [Caja_registradora_controller::class, 'store']);
+Route::put('/update-caja-registradora/{id}', [Caja_registradora_controller::class, 'update']);
+
+//REMBOLSOS______________________________________________________
+Route::get('/get-rembolso/{id}', [Rembolso_controller::class, 'show']);
+Route::post('/create-rembolso', [Rembolso_controller::class, 'store']);
+Route::get('/list-rembolsos/{id}', [Rembolso_controller::class, 'index']);
 
 
 /*//ROL_SUBUSUARIO______________________________________________

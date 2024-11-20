@@ -41,7 +41,7 @@ class Area_producto_controller extends Controller
             'id_sucursal' => 'required|integer',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors()->toJson(),422);
         }
 
         $area_producto = Area_producto_model::create(
@@ -79,7 +79,7 @@ class Area_producto_controller extends Controller
             'id_sucursal' => 'required|integer',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(),400);
+            return response()->json($validator->errors()->toJson(),422);
         }
 
         $area_producto = Area_producto_model::find($id);

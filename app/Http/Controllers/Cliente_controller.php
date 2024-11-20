@@ -59,7 +59,7 @@ class Cliente_controller extends Controller
 
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $cliente = Cliente_model::create([
@@ -80,7 +80,7 @@ class Cliente_controller extends Controller
             'message' => 'El cliente se ha creado correctamente',
             'status' => 201
         ];
-        return response()->json($data, 200);
+        return response()->json($data, 201);
     }
 
 
@@ -100,7 +100,7 @@ class Cliente_controller extends Controller
             'id_usuario' => 'required|integer',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
         $cliente = Cliente_model::find($id);
         if($cliente->isEmpty()){
@@ -140,9 +140,9 @@ class Cliente_controller extends Controller
 
         $data = [
             'message' => 'El cliente se ha eliminado correctamente',
-            'status' => 200
+            'status' => 204
         ];
-        return response()->json($data, 200);
+        return response()->json($data, 204);
     }
 
     public function show($id){

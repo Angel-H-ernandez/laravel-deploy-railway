@@ -48,7 +48,7 @@ class Sucursal_controller extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $sucursal = Sucursal_model::create([
@@ -106,7 +106,7 @@ class Sucursal_controller extends Controller
         ]);
         if($validator->fails()){
 
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $sucursal = Sucursal_model::find($id);

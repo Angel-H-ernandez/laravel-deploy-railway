@@ -58,14 +58,14 @@ class Venta_controller extends Controller
         if(!$venta){
             $data = [
                 "msg" => "No se pudo guardar la venta",
-                "status" => 404
+                "status" => 400
             ];
-            return response()->json($data, 404);
+            return response()->json($data, 400);
         }
 
         $data = [
             "msg" => "venta creada exitosamente",
-            "status" => 500,
+            "status" => 201,
             "datos" => $venta
         ];
         return response()->json($data, 201);
@@ -75,7 +75,6 @@ class Venta_controller extends Controller
     public function update(Request $request, $id){
         $validator = Validator::make($request->all(), [
             'id_cliente' => 'required|integer',
-
             'monto' => 'required|numeric',
             'id_sucursal' => 'required|integer',
             'id_trabajador' => 'required|integer',
@@ -111,7 +110,7 @@ class Venta_controller extends Controller
 
         $data = [
             "msg" => "venta actualizada exitosamente",
-            "status" => 500,
+            "status" => 200,
             "datos" => $venta
         ];
         return response()->json($data, 200);
@@ -132,7 +131,7 @@ class Venta_controller extends Controller
 
         $data = [
             "msg" => "venta eliminada exitosamente",
-            "status" => 500,
+            "status" => 200,
             "datos" => $venta
         ];
         return response()->json($data, 200);

@@ -38,7 +38,7 @@ class Compra_controller extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $compra = Compra_model::create([
@@ -52,9 +52,9 @@ class Compra_controller extends Controller
         if(!$compra){
             $data = [
                 'datos' => 'Error al crear compra',
-                'status' => '404'
+                'status' => 400
             ];
-            return response()->json($data, 404);
+            return response()->json($data, 400);
         }
 
         $data = [
@@ -74,7 +74,7 @@ class Compra_controller extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $compra = Compra_model::find($id);

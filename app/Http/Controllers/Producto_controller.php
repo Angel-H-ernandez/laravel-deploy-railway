@@ -43,7 +43,7 @@ class Producto_controller extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
 
         $producto = Producto_model::find($id);
@@ -86,7 +86,7 @@ class Producto_controller extends Controller
             'pedidos_automaticos' => 'nullable|boolean',
         ]);
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors()->toJson(), 422);
         }
         $producto = Producto_model::create([
             'nombre' => $request->nombre,
@@ -101,7 +101,7 @@ class Producto_controller extends Controller
         if(!$producto){
             $datos = [
                 'mensaje' => 'Error al crear registro',
-                'status' => 404
+                'status' => 400
             ];
             return response()->json($datos, $datos["status"]);
         }
