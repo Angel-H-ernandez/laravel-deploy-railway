@@ -113,4 +113,21 @@ class Area_trabajador_controller extends Controller
         ];
         return response()->json($data, 200);
     }
+
+    public function show($id){
+        $area_trabajador = Area_trabajador_model::find($id);
+        if(!$area_trabajador){
+            $data = [
+                'mensaje' => 'area de trabajador no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'mensaje' => 'area de trabajador encontrado',
+            'status' => 200,
+            'area_trabajador' => $area_trabajador
+        ];
+        return response()->json($data, 200);
+    }
 }

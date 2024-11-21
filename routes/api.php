@@ -4,6 +4,7 @@ use App\Http\Controllers\Area_producto_controller;
 use App\Http\Controllers\Caja_registradora_controller;
 use App\Http\Controllers\Cliente_controller;
 use App\Http\Controllers\Compra_controller;
+use App\Http\Controllers\Permisos_controller;
 use App\Http\Controllers\Producto_controller;
 use App\Http\Controllers\Provedor_controller;
 use App\Http\Controllers\Rembolso_controller;
@@ -22,7 +23,7 @@ use App\Http\Controllers\Rol_subusuario_controller;
 
 
 Route::get('/', function(){
-    return "api 2.3 \n desarrollador: Miguel angel Hernandez";
+    return "api 2.4 \n desarrollador: Miguel angel Hernandez";
 });
 
 //LOGIN___________________________________________________________
@@ -47,6 +48,7 @@ Route::get('/list-areas-trabajador/{id_usuario}', [Area_trabajador_controller::c
 Route::post('/create-area-trabajador', [Area_trabajador_controller::class, 'store']);
 Route::put('/update-area-trabajador/{id}', [Area_trabajador_controller::class, 'update']);
 Route::delete('/delete-area-trabajador/{id}', [Area_trabajador_controller::class, 'delete']);
+Route::get('/get-area-trabajador/{id}', [Area_trabajador_controller::class, 'show']);
 
 //CLIENTES____________________________________________________________________
 Route::get('/list-clientes/{id_usuario}', [Cliente_controller::class, 'index']);
@@ -78,25 +80,30 @@ Route::get('/get-provedor/{id}', [Provedor_controller::class, 'show']);
 
 //COMPRAS______________________________________________________-
 Route::get('/list-compras/{id}', [Compra_controller::class, 'index']);
-Route::put('/update-compra/{id}', [Compra_controller::class, 'update']);
 Route::post('/create-compra/{id}', [Compra_controller::class, 'store']);
 Route::delete('/delete-compra/{id}', [Compra_controller::class, 'delete']);
+Route::get('/get-compra/{id}', [Compra_controller::class, 'show']);
 
 //VENTAS______________________________________________________-
 Route::get('/list-ventas/{id}', [Venta_controller::class, 'index']);
 Route::post('/create-venta', [Venta_controller::class, 'store']);
 Route::delete('/delete-venta/{id}', [Venta_controller::class, 'delete']);
-Route::put('/update-venta/{id}', [Venta_controller::class, 'update']);
+Route::get('/get-venta/{id}', [Venta_controller::class, 'show']);
+
 
 //CAJA REGISTRADORA______________________________________________________
 Route::get('/get-caja-registradora/{id}', [Caja_registradora_controller::class, 'show']);
 Route::post('/create-caja-registradora', [Caja_registradora_controller::class, 'store']);
 Route::put('/update-caja-registradora/{id}', [Caja_registradora_controller::class, 'update']);
+Route::get('/list-cajas-registradoras/{id}', [Caja_registradora_controller::class, 'index']);
 
 //REMBOLSOS______________________________________________________
 Route::get('/get-rembolso/{id}', [Rembolso_controller::class, 'show']);
 Route::post('/create-rembolso', [Rembolso_controller::class, 'store']);
 Route::get('/list-rembolsos/{id}', [Rembolso_controller::class, 'index']);
+
+//PERMISOS______________________________________________________
+Route::get('/get-permisos/{id_user}', [Permisos_controller::class, 'show']);
 
 
 /*//ROL_SUBUSUARIO______________________________________________

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Provedor_model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class Provedor_controller extends Controller
 {
@@ -17,6 +20,23 @@ class Provedor_controller extends Controller
             ];
             return response()->json($data, 404);
         }
+        //descencriptar datoss antes de enviar
+        foreach ($provedores as $provedor) {
+            try {
+
+                if (Str::contains($provedor->correo, 'eyJpdiI6')) {
+                    $provedor->correo = Crypt::decryptString($provedor->correo);
+                }
+
+                // Verifica si el teléfono está encriptado
+                if (Str::contains($provedor->telefono, 'eyJpdiI6')) {
+                    $provedor->telefono = Crypt::decryptString($provedor->telefono);
+                }
+            } catch (\Exception $e) {
+                Log::error('Error al desencriptar: ' . $e->getMessage());
+            }
+        }
+
         $data = [
             'datos' => $provedores,
             'status' => 200
@@ -30,14 +50,15 @@ class Provedor_controller extends Controller
             'nombre' => 'required|string',
             'telefono' => 'required|integer',
             'correo' => 'required|email',
+
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 422);
         }
         $provedor = Provedor_model::create([
             'nombre' => $request->nombre,
-            'telefono' => $request->telefono,
-            'correo' => $request->correo,
+            'telefono' => Crypt::encryptString((string)$request->telefono),
+            'correo' => Crypt::encryptString($request->correo),
             'id_usuario' => $id,
         ]);
         if(!$provedor){
@@ -73,8 +94,8 @@ class Provedor_controller extends Controller
         }
 
         $provedor->nombre = $request->nombre;
-        $provedor->correo = $request->correo;
-        $provedor->telefono = $request->telefono;
+        $provedor->correo = Crypt::encryptString($request->correo);
+        $provedor->telefono = Crypt::encryptString((string)$request->telefono);
         $provedor->save();
 
         $data = [
@@ -93,6 +114,17 @@ class Provedor_controller extends Controller
             ];
             return response()->json($data, 404);
         }
+
+        // Verifica si el correo está encriptado
+        if (Str::contains($provedor->correo, 'eyJpdiI6')) {
+            $provedor->correo = Crypt::decryptString($provedor->correo);
+        }
+
+        // Verifica si el teléfono está encriptado
+        if (Str::contains($provedor->telefono, 'eyJpdiI6')) {
+            $provedor->telefono = Crypt::decryptString($provedor->telefono);
+        }
+
         $data = [
             'datos' => $provedor,
             'status' => 200

@@ -137,4 +137,21 @@ class Venta_controller extends Controller
         return response()->json($data, 200);
 
     }
+
+    public function show($id){
+        $venta = Venta_model::find($id);
+        if(!$venta){
+            $data = [
+                "msg" => "No se encontro una venta con ese id",
+                "status" => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            "msg" => "venta encontrada exitosamente",
+            "status" => 200,
+            "datos" => $venta
+        ];
+        return response()->json($data, 200);
+    }
 }

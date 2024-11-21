@@ -105,4 +105,21 @@ class Caja_registradora_controller extends Controller
         ];
         return response()->json($data, 201);
     }
+
+    public function index($id_usuario){
+        $caja_registradora = Caja_registradora_model::where('id_usuario', $id_usuario)->get();
+
+        if($caja_registradora->isEmpty()){
+            $data = [
+                'mensaje' => 'No se encontraron caja registradoras con esse usuario',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'datos' => $caja_registradora,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
 }

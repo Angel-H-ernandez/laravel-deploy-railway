@@ -21,7 +21,7 @@ class Trabajador_model extends Model
         "id_area_trabajador",
         "sueldo",
         "cuenta_bancaria",
-        "periodo_de_pago",
+        "periodo_pago",
         "password"
     ];
 }

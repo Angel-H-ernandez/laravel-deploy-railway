@@ -6,7 +6,10 @@ use App\Librerias\Validar_usuario;
 use App\Models\Cliente_model;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use function PHPUnit\Framework\isEmpty;
 
 class Cliente_controller extends Controller
@@ -31,6 +34,20 @@ class Cliente_controller extends Controller
             ];
             return response()->json($data, 404);
         }
+
+        foreach ($clientes as $cliente) {
+            try {
+               if(Str::contains($cliente->email, 'eyJpdiI6')){
+                    $cliente->email = Crypt::decryptString($cliente->email);
+                }
+               if(Str::contains($cliente->telefono, 'eyJpdiI6')){
+                    $cliente->telefono = Crypt::decryptString($cliente->telefono);
+                }
+            } catch (\Exception $e) {
+                Log::error('Error al desencriptar: ' . $e->getMessage());
+            }
+        }
+
         $data = [
             'datos' => $clientes,
             'status' => 200
@@ -64,8 +81,8 @@ class Cliente_controller extends Controller
 
         $cliente = Cliente_model::create([
             'nombre' => $request->nombre,
-            'telefono' => $request->telefono,
-            'email' => $request->email,
+            'telefono' => Crypt::encryptString((string)$request->telefono),
+            'email' => Crypt::encryptString($request->email),
             'id_usuario' => $request->id_usuario
         ]);
         if(!$cliente){
@@ -112,8 +129,8 @@ class Cliente_controller extends Controller
         }
 
         $cliente->nombre = $request->nombre;
-        $cliente->telefono = $request->telefono;
-        $cliente->email = $request->email;
+        $cliente->telefono = Crypt::encryptString((string)$request->telefono);
+        $cliente->email = Crypt::encryptString($request->email);
         $cliente->id_usuario = $request->id_usuario;
         $cliente->save();
 
@@ -154,6 +171,14 @@ class Cliente_controller extends Controller
                 'status' => 404
             ];
             return response()->json($data, 404);
+        }
+
+        if (Str::contains($cliente->email, 'eyJpdiI6')) {
+            $cliente->email = Crypt::decryptString($cliente->email);
+        }
+
+        if (Str::contains($cliente->telefono, 'eyJpdiI6')) {
+            $cliente->telefono = Crypt::decryptString($cliente->telefono);
         }
 
         $data = [

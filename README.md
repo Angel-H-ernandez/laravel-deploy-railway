@@ -224,8 +224,6 @@ ___
 - encriptacion de passwords, email y telefono
 - devolver permisos de usario y trabajador
 - organizar de mejor manaer ep an api.
-- verficar codigo de error para show
-- añadir los metodos shows donde sea necesartio
 - verificar que en todas las vistas se envien datos formateados
 - verficar la estructura general de los metodos
 - actualizar datos cuando se cambie la base de datos

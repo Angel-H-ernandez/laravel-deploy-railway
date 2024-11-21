@@ -26,7 +26,18 @@ class Compra_controller extends Controller
         return response()->json($data, 200);
     }
     public function show($id){
-
+        $compra = Compra_model::find($id);
+        if(!$compra){
+            $data = [
+                'error' => 'No existe la compra con ese id'
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'datos' => $compra,
+            'status' => '200'
+        ];
+        return response()->json($data, 200);
     }
     public function store(Request $request, $id){
 
