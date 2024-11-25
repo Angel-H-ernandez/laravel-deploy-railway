@@ -18,4 +18,10 @@ class Producto_model extends Model
         'cantidad',
         'precio',
     ];
+
+    // En el modelo Producto_model
+    public function areaProducto()
+    {
+        return $this->belongsTo(Area_producto_model::class, 'id_area_producto', 'id');
+    }
 }

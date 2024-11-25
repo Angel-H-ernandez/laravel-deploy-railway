@@ -10,7 +10,10 @@ class Producto_controller extends Controller
 {
     public function index($id_usuario)
     {   //hacer la consulta sql
-        $productos = Producto_model::where('id_usuario', $id_usuario)->get();
+       // $productos = Producto_model::where('id_usuario', $id_usuario)->get();
+        $productos = Producto_model::with('areaProducto')
+            ->where('id_usuario', $id_usuario)
+            ->get();
 
         //vertficar si esta vacio
         if($productos->isEmpty()){
