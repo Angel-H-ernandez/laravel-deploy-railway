@@ -12,8 +12,11 @@ use Illuminate\Support\Str;
 class Trabajador_controller extends Controller
 {
     //
-    public function index($id){
-        $trabajadores = Trabajador_model::where('id_usuario', $id)->get();
+    public function index($id_usuario){
+       // $trabajadores = Trabajador_model::where('id_usuario', $id)->get();
+        $trabajadores = Trabajador_model::with('areaTrabajador')
+            ->where('id_usuario', $id_usuario)
+            ->get();
 
         //si no hay trabajadores
         if($trabajadores->isEmpty()){

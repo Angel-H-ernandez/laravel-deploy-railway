@@ -24,4 +24,10 @@ class Trabajador_model extends Model
         "periodo_pago",
         "password"
     ];
+
+    // relacion para resolver la ferey key
+    public function areaTrabajador()
+    {
+        return $this->belongsTo(Area_trabajador_model::class, 'id_area_trabajador', 'id');
+    }
 }
