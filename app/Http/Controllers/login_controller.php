@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Trabajador_model;
 use App\Models\User_administrador_model;
 use App\Models\Users_model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -21,6 +22,8 @@ class login_controller extends Controller
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
+
+
 
         //buscar si es trabajador
         $trabajador = Trabajador_model::where('email', $request->correo)
@@ -61,18 +64,37 @@ class login_controller extends Controller
 
             }
 
+            $permisos = DB::table('users as u')
+                ->select('u.nombre', 'm.codigo as vista', 'm.nombre as nombre_vista', 'p.tiene_permiso')
+                ->join('plan_servicio as ps', 'u.id_plan_servicio', '=', 'ps.id')
+                ->join('permisos_plan as p', 'ps.id', '=', 'p.id_plan')
+                ->join('modulos as m', 'p.id_modulo', '=', 'm.id')
+                ->where('u.id', $user->id)
+                ->orderBy('m.id')
+                ->get();
+
             $data = [
                 'login' => $user->activo,
                 'status' => 200,
                 'tipo_user' => 'Usuario',
                 //'user' => $user,
                 'id_user' => $user->id,
-                'id_trabajador'  => 0
+                'id_trabajador'  => 0,
+                'permissos_usuario' => $permisos
             ];
 
             return response()->json($data, 200);
 
         }
+
+        $permisos = DB::table('users as u')
+            ->select('u.nombre', 'm.codigo as vista', 'm.nombre as nombre_vista', 'p.tiene_permiso')
+            ->join('plan_servicio as ps', 'u.id_plan_servicio', '=', 'ps.id')
+            ->join('permisos_plan as p', 'ps.id', '=', 'p.id_plan')
+            ->join('modulos as m', 'p.id_modulo', '=', 'm.id')
+            ->where('u.id', $trabajador->id_usuario)
+            ->orderBy('m.id')
+            ->get();
 
         $data = [
             'login' => $trabajador->activo,
@@ -80,7 +102,8 @@ class login_controller extends Controller
             'tipo_user' => 'Trabajador',
             //'user' => $trabajador,
             'id_user' => $trabajador->id_usuario,
-            'id_trabajador' => $trabajador->id
+            'id_trabajador' => $trabajador->id,
+            'permisos_usuario' => $permisos
         ];
         return response()->json($data, 200);
 

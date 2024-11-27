@@ -2,6 +2,7 @@
 ### ruta raiz
 ``https://sawapi.up.railway.app/api``
 
+## features
 
 
 
@@ -220,11 +221,6 @@ ___
 ___
 
 
-## features
-- encriptacion de passwords, email y telefono
-- devolver permisos de usario y trabajador
-- organizar de mejor manaer ep an api.
-- verificar que en todas las vistas se envien datos formateados
 
 
 
