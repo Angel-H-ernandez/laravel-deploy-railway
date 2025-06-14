@@ -2,7 +2,8 @@
 ### ruta raiz
 ``https://sawapi.up.railway.app/api``
 
-## features
+d
+-limite de intento al iniciar sesion
 
 
 
@@ -219,11 +220,3 @@ ___
 }
 ```
 ___
-
-
-
-
-
-
-
-

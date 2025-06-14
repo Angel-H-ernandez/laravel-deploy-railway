@@ -36,6 +36,32 @@ Route::get('/list-sucursales/{id_usuario}', [Sucursal_controller::class, 'index'
 Route::post('/create-sucursal', [Sucursal_controller::class, 'store']);
 Route::delete('/delete-sucursal/{id}', [Sucursal_controller::class, 'destroy']);
 
+Route::prefix('sucursal')->group(function () {
+    Route::get('{id}', [Sucursal_controller::class, 'show']);
+    Route::put('{id}', [Sucursal_controller::class, 'update']);
+    Route::get('list/{id_usuario}', [Sucursal_controller::class, 'index']);
+    Route::post('create ', [Sucursal_controller::class, 'store']);
+    Route::delete(' /{id}', [Sucursal_controller::class, 'destroy']);
+});
+
+Route::prefix('sucursal')->group(function () {
+    // Obtener una sucursal por ID
+    Route::get('{id}', [Sucursal_controller::class, 'show']);
+
+    // Actualizar una sucursal por ID
+    Route::put('{id}', [Sucursal_controller::class, 'update']);
+
+    // Obtener todas las sucursales de un usuario
+    Route::get('{id_usuario}/sucursales', [Sucursal_controller::class, 'index']);
+
+    // Crear una nueva sucursal
+    Route::post('create', [Sucursal_controller::class, 'store']);
+
+    // Eliminar una sucursal por ID
+    Route::delete('{id}', [Sucursal_controller::class, 'destroy']);
+});
+
+
 //AREA_PRODUCTO_____________________________________________________________________-
 Route::get('/list-areas-productos/{id_usuario}', [Area_producto_controller::class, 'index']);
 Route::post('/create-area-producto', [Area_producto_controller::class, 'store']);
